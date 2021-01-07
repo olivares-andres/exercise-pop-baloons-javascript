@@ -1,23 +1,48 @@
-h1{ text-align: center; margin-bottom: 50px;}
-#balloon-map{
-    width: 224px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: auto;
+h1 {
+	font-family: 'Nerko One', arial;
+    color: white;
+    border: solid;
+    background: black;
 }
+
+* {
+	text-align: center;
+    color: gold;
+	
+}
+
+body {
+	
+  background: url(/img/back.jpg);
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+#balloon-grid {
+	background-color: white;
+	width: 250px;
+	height: 450px;
+	border: 2px dotted magenta;
+	border-radius: 10px;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	padding: 5px;
+}
+
 .balloon {
-    position: relative;
-    flex-grow: 1;
-    width: 50px;
-    margin: 3px;
-    background: rgb(20,189,34);
-    opacity: .9;
-    border-radius: 50%;
-    height: 50px;
-    cursor: pointer; 
-    animation: float 6s ease-in-out infinite;
+	width: 45px;
+	height: 55px;
+	background-color: yellow;
+	border-radius: 50%;
+	margin: 3px;
+	flex-grow: 1;
+	position: relative;
+	cursor: pointer;
+	animation: float 7s ease-in-out infinite;
 }
+
 .balloon:after {
     position: absolute;
     background: inherit;
@@ -29,13 +54,19 @@ h1{ text-align: center; margin-bottom: 50px;}
     width: 3px;
     border-radius: 100%;
 }
-.balloon:hover{ animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both; }
-.balloon.popped { visibility: hidden; }
-.balloon.popped:after { visibility: hidden; }
 
+.balloon:hover {
+ animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+ }
 
+.balloon.popped { 
+	visibility: hidden;
+}
 
-/* ANIMATIONS */
+.balloon.popped:after {
+	visibility: hidden;
+}
+
 @keyframes float {
 	0% {
 		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
@@ -43,7 +74,7 @@ h1{ text-align: center; margin-bottom: 50px;}
 	}
 	50% {
 		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
-		transform: translatey(-20px);
+		transform: translatey(-15px);
 	}
 	100% {
 		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
@@ -55,16 +86,30 @@ h1{ text-align: center; margin-bottom: 50px;}
     10%, 90% {
       transform: translate3d(-1px, 0, 0);
     }
-    
+
     20%, 80% {
       transform: translate3d(2px, 0, 0);
     }
-  
+
     30%, 50%, 70% {
       transform: translate3d(-4px, 0, 0);
     }
-  
+
     40%, 60% {
       transform: translate3d(4px, 0, 0);
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

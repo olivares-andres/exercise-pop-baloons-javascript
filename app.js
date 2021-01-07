@@ -1,25 +1,55 @@
-// we declare a new global variable containing an array that represents the ballons map
-let ballonsMap = ['green'];
-let activeBalloons = 20;
+const grid = document.querySelector("#balloon-grid");
 
-// poping a balloon is basically turning his color to null (no color)
-const popBalloon = (position) => {
-    // set the color to null on the balloon position
-    render();
+let balloonColors = [
+	"green","gold", "skyblue","orange",
+    "grey","brown","orange","yellow",
+    "pink",'red',"violet",'green',
+    "brown","purple",'blue',"yellow",
+    'green',"grey","red","skyblue",
+];
+
+function popBalloon(position) {
+	balloonColors[position] = null;
+	render();
 }
 
-const render = () => {
-    
-    // convert ballons map of colors into real html balloons
-    const ballons = ballonsMap.map((color, position) => {
-        return `<div class="balloon active"></div>`; // <--- render each balloon
-    });
+function render() {
 
-    document.querySelector("#balloon-count").innerHTML = activeBalloons; // <-- rende the balloon count into the DOM
-    document.querySelector("#balloon-map").innerHTML = ballons.join(''); // <-- render the balloons into the DOM
+let content = "";
+var activeBalloons = 0;
 
-    if(activeBalloons == 0) window.location.reload(); // <--- reload website when no more balloons are left
+balloonColors.forEach(function(color, position) {
+
+	let visibility = "active";
+
+	if (color === null) {
+		visibility = "popped";
+	}
+
+	else {
+		activeBalloons++;
+	}
+
+	content = content + `<div class="balloon ${visibility}" style="background: ${color}" onClick="popBalloon(${position})"></div>`;
+
+});
+
+grid.innerHTML = content;
+document.querySelector('#count').innerHTML = activeBalloons;
+
+if (activeBalloons === 0) {
+	window.location.reload();
 }
 
-// this makes the "render" function trigger when the website starts existing
+}
+
+
 window.onload = render();
+
+
+
+
+
+
+
+
